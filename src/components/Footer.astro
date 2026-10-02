@@ -1,11 +1,11 @@
 ---
-import { site } from '../data/site';
+import { site, withBase } from '../data/site';
 const year = new Date().getFullYear();
 ---
 <footer>
   <div class="wrap row">
     <div>
-      <a href="/" class="b">Auto<span class="grad-text">Nexus</span></a>
+      <a href={withBase('/')} class="b">Auto<span class="grad-text">Nexus</span></a>
       <p>Software para talleres mecánicos. Control de servicios con seguimiento en tiempo real.</p>
     </div>
     <nav aria-label="Pie de página">
@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
       <a href="#planes">Planes</a>
       <a href="#faq">Preguntas</a>
       <a href="#contacto">Contacto</a>
-      <a href="/privacidad/">Aviso de privacidad</a>
+      <a href={withBase('/privacidad/')}>Aviso de privacidad</a>
     </nav>
   </div>
   <div class="wrap copy">© {year} {site.name}. Todos los derechos reservados.</div>

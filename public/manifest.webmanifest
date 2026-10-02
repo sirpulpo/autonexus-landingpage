@@ -1,1 +1,1 @@
-{"name":"AutoNexus","short_name":"AutoNexus","lang":"es-MX","start_url":"/","display":"browser","background_color":"#070B14","theme_color":"#070B14","icons":[{"src":"/favicon.svg","sizes":"any","type":"image/svg+xml"}]}
+{"name":"AutoNexus","short_name":"AutoNexus","lang":"es-MX","start_url":"./","display":"browser","background_color":"#070B14","theme_color":"#070B14","icons":[{"src":"favicon.svg","sizes":"any","type":"image/svg+xml"}]}

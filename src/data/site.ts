@@ -1,7 +1,7 @@
 // Datos editables de la landing. Ajusta los PLACEHOLDER antes de publicar.
 export const site = {
   name: 'AutoNexus',
-  url: 'https://autonexus.mx', // PLACEHOLDER
+  url: 'https://sirpulpo.github.io/autonexus-landingpage', // raíz pública, incluye base; sin dominio propio
   whatsapp: '525574989093', // PLACEHOLDER: código país + número, sin +
   email: 'hola@autonexus.mx', // PLACEHOLDER
   // Si defines un endpoint (p. ej. Formspree), el formulario hará POST ahí además de abrir WhatsApp.
@@ -11,7 +11,10 @@ export const site = {
     'Sistema para talleres mecánicos: órdenes de servicio, inspección con fotos, presupuestos aprobados por el cliente y seguimiento del vehículo en tiempo real. Evita reclamos y mejora la comunicación. Solicita tu demo.',
 };
 
-export const waLink = (text = 'Hola, quiero una demo de AutoNexus para mi taller.') =>
+// Prefija rutas internas con la base del sitio (p. ej. '/autonexus-landingpage').
+export const withBase = (p = '/') => import.meta.env.BASE_URL.replace(/\/$/, '') + p;
+
+export const waLink =(text = 'Hola, quiero una demo de AutoNexus para mi taller.') =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export const estados = [

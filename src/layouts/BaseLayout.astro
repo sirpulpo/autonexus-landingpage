@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { site, planes, faqs } from '../data/site';
+import { site, planes, faqs, withBase } from '../data/site';
 
 interface Props {
   title?: string;
@@ -10,8 +10,8 @@ interface Props {
   noindex?: boolean;
 }
 const { title = site.title, description = site.description, path = '/', jsonLd = false, noindex = false } = Astro.props;
-const canonical = new URL(path, site.url).href;
-const og = new URL('/og-image.svg', site.url).href;
+const canonical = site.url + path;
+const og = `${site.url}/og-image.svg`;
 
 const graph = [
   {
@@ -59,8 +59,8 @@ const graph = [
     <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="es-MX" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="manifest" href={withBase('/manifest.webmanifest')} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:site_name" content={site.name} />

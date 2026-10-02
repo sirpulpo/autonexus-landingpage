@@ -1,5 +1,5 @@
 ---
-import { waLink } from '../data/site';
+import { waLink, withBase } from '../data/site';
 const links = [
   ['#como-funciona', 'Cómo funciona'],
   ['#apps', 'Las apps'],
@@ -10,7 +10,7 @@ const links = [
 ---
 <header class="site-header">
   <div class="wrap bar">
-    <a href="/" class="brand" aria-label="AutoNexus, inicio">
+    <a href={withBase('/')} class="brand" aria-label="AutoNexus, inicio">
       <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
         <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
         <rect width="64" height="64" rx="16" fill="#0b1220" stroke="rgba(148,163,184,.3)"/>

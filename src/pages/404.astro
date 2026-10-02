@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../data/site';
 ---
 <BaseLayout title="Página no encontrada | AutoNexus" description="La página que buscas no existe." path="/404/" noindex>
   <main>
     <h1>404</h1>
     <p>Esta página no existe.</p>
-    <a href="/" class="btn btn-primary">Volver al inicio</a>
+    <a href={withBase('/')} class="btn btn-primary">Volver al inicio</a>
   </main>
 </BaseLayout>
 

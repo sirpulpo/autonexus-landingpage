@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { site, waLink } from '../data/site';
+import { site, waLink, withBase } from '../data/site';
 ---
 <section id="contacto">
   <div class="wrap box glow-border rv">
@@ -21,7 +21,7 @@ import { site, waLink } from '../data/site';
       <label>Mensaje (opcional)<textarea name="msg" rows="3"></textarea></label>
       <button class="btn btn-primary" type="submit">Solicitar demo por WhatsApp</button>
       <p id="form-ok" hidden role="status">¡Gracias! Se abrió WhatsApp para enviar tu solicitud.</p>
-      <small>Al enviar aceptas nuestro <a href="/privacidad/">aviso de privacidad</a>.</small>
+      <small>Al enviar aceptas nuestro <a href={withBase('/privacidad/')}>aviso de privacidad</a>.</small>
     </form>
   </div>
 </section>
