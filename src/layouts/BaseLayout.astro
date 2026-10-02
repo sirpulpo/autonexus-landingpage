@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import { site, planes, faqs } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  jsonLd?: boolean;
+  noindex?: boolean;
+}
+const { title = site.title, description = site.description, path = '/', jsonLd = false, noindex = false } = Astro.props;
+const canonical = new URL(path, site.url).href;
+const og = new URL('/og-image.svg', site.url).href;
+
+const graph = [
+  {
+    '@type': 'Organization',
+    '@id': `${site.url}/#org`,
+    name: site.name,
+    url: site.url,
+    logo: `${site.url}/favicon.svg`,
+    email: site.email,
+  },
+  {
+    '@type': 'SoftwareApplication',
+    name: site.name,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, Android, iOS',
+    description,
+    inLanguage: 'es-MX',
+    publisher: { '@id': `${site.url}/#org` },
+    offers: planes.map((p) => ({
+      '@type': 'Offer',
+      name: `Plan ${p.nombre}`,
+      price: p.precio,
+      priceCurrency: 'MXN',
+      description: `${p.desc} Renta mensual.`,
+    })),
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#070B14" />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es-MX" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <noscript><style>.rv{opacity:1!important;transform:none!important}.tl-step{opacity:1!important}</style></noscript>
+    {jsonLd &&<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+const taller = [
+  ['clipboard', 'Órdenes con folio', 'Folio consecutivo por taller, mecánico asignado y fecha promesa de entrega.'],
+  ['camera', 'Inspección y evidencias', 'Fotos y videos por etapa. Al avanzar, la evidencia anterior se bloquea.'],
+  ['money', 'Presupuestos claros', 'Mano de obra y refacciones desglosadas, listos para aprobación.'],
+  ['chat', 'Chat por orden', 'Habla con el cliente dentro de la orden, todo queda en el historial.'],
+  ['users', 'Roles y equipo', 'Dueño, administrador, recepción y mecánico con permisos propios.'],
+  ['chart', 'Panel del dueño', 'Órdenes por estado, tiempo promedio de entrega, refacciones más usadas y productividad por mecánico.'],
+];
+const cliente = [
+  ['bolt', 'Estatus en tiempo real', 'Ve cómo avanza su vehículo sin llamar al taller.'],
+  ['link', 'Seguimiento con un enlace', 'Sin cuenta ni contraseña: abre el link y listo.'],
+  ['check', 'Aprueba presupuestos', 'Autoriza o rechaza con un toque desde su celular.'],
+  ['bell', 'Notificaciones push', 'Aviso por cambio de estatus, diagnóstico, fecha de entrega y mensajes.'],
+  ['camera', 'Galería de evidencias', 'Fotos y videos del diagnóstico, reparación y entrega.'],
+  ['building', 'Todos sus autos y talleres', 'Un solo acceso para sus vehículos y órdenes, aunque use varios talleres.'],
+];
+---
+<section id="apps">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Dos apps, un solo sistema</span>
+      <h2>Una app para tu taller y otra para <span class="grad-text">tus clientes</span></h2>
+      <p>Dos PWA instalables en Android, iOS y computadora, conectadas en tiempo real. Sin pasar por tiendas de apps.</p>
+    </div>
+    <div class="grid g2 cols">
+      <div class="panel glow-border rv">
+        <header><span class="badge">Para el taller</span><h3>AutoNexus Taller</h3><p>Control total de cada servicio, de la recepción a la entrega.</p></header>
+        <ul>
+          {taller.map(([i, t, d]) => <li><span class="ico"><Icon name={i} /></span><div><b>{t}</b><span>{d}</span></div></li>)}
+        </ul>
+      </div>
+      <div class="panel glow-border rv" style="--d:.12s">
+        <header><span class="badge b2">Para el cliente</span><h3>AutoNexus Cliente</h3><p>Transparencia que se convierte en confianza y recomendaciones.</p></header>
+        <ul>
+          {cliente.map(([i, t, d]) => <li><span class="ico"><Icon name={i} /></span><div><b>{t}</b><span>{d}</span></div></li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="pwa-note rv">
+      <Icon name="wifi" /> <span>Instalables, con soporte sin conexión para consultar órdenes y clientes, y actualizaciones automáticas.</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .panel { position: relative; padding: 34px; border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid var(--line); backdrop-filter: blur(10px); }
+  .badge { display: inline-block; font: 600 .72rem var(--font-h); letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; background: rgba(59,130,246,.16); padding: 5px 12px; border-radius: 99px; margin-bottom: 14px; }
+  .b2 { color: var(--cyan); background: rgba(34,211,238,.14); }
+  header p { color: var(--muted); margin: 8px 0 26px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  li { display: flex; gap: 16px; align-items: flex-start; }
+  li .ico { margin: 0; flex: none; width: 42px; height: 42px; }
+  li div { display: flex; flex-direction: column; }
+  li b { font-family: var(--font-h); font-weight: 600; }
+  li span:not(.ico) { color: var(--muted); font-size: .93rem; }
+  .pwa-note { margin-top: 34px; display: flex; gap: 12px; align-items: center; justify-content: center; text-align: center; color: var(--muted); }
+  .pwa-note :global(svg) { width: 22px; height: 22px; color: var(--cyan); flex: none; }
+</style>

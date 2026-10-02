@@ -1,0 +1,36 @@
+---
+const pasos = [
+  ['Recepción con evidencia', 'Registras el vehículo con fotos, nivel de gasolina, accesorios y checklist. El cliente confirma la inspección desde su celular o en el mostrador.'],
+  ['Diagnóstico y presupuesto', 'El mecánico documenta fallas y arma el presupuesto separando mano de obra y refacciones. El cliente recibe una notificación.'],
+  ['El cliente aprueba', 'Autoriza o rechaza el presupuesto con un toque, incluso sin crear cuenta. Tú sigues con la reparación con total respaldo.'],
+  ['Reparación y entrega', 'Subes fotos y videos del avance, el cliente ve cada cambio de estatus y al final recibe el aviso: “Tu auto está listo”.'],
+];
+---
+<section id="como-funciona" class="alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2>De la recepción a la entrega, <span class="grad-text">todo documentado</span></h2>
+    </div>
+    <ol class="steps">
+      {pasos.map(([t, d], i) => (
+        <li class="rv" style={`--d:${i * 0.1}s`}>
+          <span class="num">{i + 1}</span>
+          <h3>{t}</h3>
+          <p>{d}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .alt { background: linear-gradient(180deg, transparent, rgba(11,18,32,.9) 20%, rgba(11,18,32,.9) 80%, transparent); }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; counter-reset: s; position: relative; }
+  .steps li { position: relative; padding: 28px 24px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); }
+  .steps li::after { content: ''; position: absolute; top: 52px; right: -22px; width: 22px; height: 2px; background: var(--grad); opacity: .6; }
+  .steps li:last-child::after { display: none; }
+  .num { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; margin-bottom: 18px; font: 700 1.1rem var(--font-h); color: #04101f; background: var(--grad); box-shadow: 0 0 24px rgba(34,211,238,.4); }
+  .steps p { color: var(--muted); margin-top: 10px; font-size: .96rem; }
+  @media (max-width: 700px) { .steps li::after { display: none; } }
+</style>

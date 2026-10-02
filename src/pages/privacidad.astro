@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Aviso de privacidad | AutoNexus" description="Aviso de privacidad de AutoNexus." path="/privacidad/">
+  <Header />
+  <main class="wrap doc">
+    <h1>Aviso de privacidad</h1>
+    <p>Este es un texto de ejemplo; reemplázalo con tu aviso de privacidad legal antes de publicar.</p>
+    <h2>Datos que recabamos</h2>
+    <p>Nombre, nombre del taller, ciudad y teléfono que proporcionas en el formulario de contacto, únicamente para responder tu solicitud de información sobre {site.name}.</p>
+    <h2>Uso de la información</h2>
+    <p>No vendemos ni compartimos tus datos con terceros. Puedes solicitar su acceso, rectificación o eliminación escribiendo a <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .doc { padding: 130px 0 80px; max-width: 760px; }
+  h2 { font-size: 1.4rem; margin: 32px 0 8px; }
+  p { color: var(--muted); margin-top: 12px; }
+  a { color: var(--cyan); }
+</style>

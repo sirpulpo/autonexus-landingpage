@@ -1,0 +1,45 @@
+---
+import Icon from './Icon.astro';
+import { site, waLink } from '../data/site';
+---
+<section id="contacto">
+  <div class="wrap box glow-border rv">
+    <div class="left">
+      <span class="eyebrow">Demo gratuita</span>
+      <h2>Lleva tu taller al <span class="grad-text">siguiente nivel</span></h2>
+      <p>Cuéntanos de tu taller y te mostramos AutoNexus funcionando con tu flujo de trabajo. Respondemos por WhatsApp el mismo día.</p>
+      <a class="btn btn-ghost" href={waLink()} target="_blank" rel="noopener"><Icon name="wa" /> Escríbenos directo</a>
+      <p class="mail">o a <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </div>
+    <form id="contact-form" data-wa={site.whatsapp} data-endpoint={site.formEndpoint || undefined}>
+      <label>Tu nombre<input name="nombre" required autocomplete="name" /></label>
+      <label>Nombre del taller<input name="taller" required autocomplete="organization" /></label>
+      <div class="two">
+        <label>Ciudad<input name="ciudad" required autocomplete="address-level2" /></label>
+        <label>Teléfono<input name="tel" type="tel" required autocomplete="tel" inputmode="tel" /></label>
+      </div>
+      <label>Mensaje (opcional)<textarea name="msg" rows="3"></textarea></label>
+      <button class="btn btn-primary" type="submit">Solicitar demo por WhatsApp</button>
+      <p id="form-ok" hidden role="status">¡Gracias! Se abrió WhatsApp para enviar tu solicitud.</p>
+      <small>Al enviar aceptas nuestro <a href="/privacidad/">aviso de privacidad</a>.</small>
+    </form>
+  </div>
+</section>
+
+<style>
+  .box { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 52px; border-radius: 28px; border: 1px solid var(--line); background: radial-gradient(600px 300px at 100% 0%, rgba(34,211,238,.14), transparent 70%), radial-gradient(500px 300px at 0% 100%, rgba(59,130,246,.2), transparent 70%), var(--bg2); }
+  .left p { color: var(--muted); margin: 16px 0 26px; }
+  .left .mail { margin: 18px 0 0; font-size: .95rem; }
+  .left .mail a { color: var(--cyan); }
+  .left .btn :global(svg) { width: 20px; height: 20px; }
+  form { display: grid; gap: 16px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { display: grid; gap: 6px; font-size: .85rem; color: var(--muted); }
+  input, textarea { font: inherit; color: var(--text); background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; transition: border-color .2s, box-shadow .2s; }
+  input:focus, textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(34,211,238,.18); }
+  #form-ok { color: var(--green); font-size: .92rem; }
+  small { color: var(--muted); font-size: .78rem; }
+  small a { text-decoration: underline; }
+  @media (max-width: 860px) { .box { grid-template-columns: 1fr; padding: 30px 22px; gap: 30px; } }
+  @media (max-width: 480px) { .two { grid-template-columns: 1fr; } }
+</style>

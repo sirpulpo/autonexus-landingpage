@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+import { planes, waLink } from '../data/site';
+---
+<section id="planes" class="alt">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Planes</span>
+      <h2>Renta mensual, <span class="grad-text">sin plazos forzosos</span></h2>
+      <p>Elige el plan según el tamaño de tu taller. Precios en MXN, más IVA. Cancela cuando quieras.</p>
+    </div>
+    <div class="grid g3 plans">
+      {planes.map((p, i) => (
+        <article class:list={['plan', 'rv', { hot: p.destacado, 'glow-border': p.destacado }]} style={`--d:${i * 0.1}s`}>
+          {p.destacado && <span class="ribbon">Más popular</span>}
+          <h3>{p.nombre}</h3>
+          <p class="desc">{p.desc}</p>
+          <div class="price"><sup>$</sup><b>{p.precio.toLocaleString('es-MX')}</b><span>/mes</span></div>
+          <ul>
+            {p.items.map((it) => <li><Icon name="check" />{it}</li>)}
+          </ul>
+          <a class:list={['btn', p.destacado ? 'btn-primary' : 'btn-ghost']} href={waLink(`Hola, me interesa el plan ${p.nombre} de AutoNexus.`)} target="_blank" rel="noopener">Contratar {p.nombre}</a>
+        </article>
+      ))}
+    </div>
+    <p class="note rv">¿Prefieres comprar la licencia o necesitas algo a la medida? <a href="#contacto">Cuéntanos tu caso</a>.</p>
+  </div>
+</section>
+
+<style>
+  .alt { background: linear-gradient(180deg, transparent, rgba(11,18,32,.9) 20%, rgba(11,18,32,.9) 80%, transparent); }
+  .plans { align-items: stretch; }
+  .plan { position: relative; display: flex; flex-direction: column; padding: 34px 28px; border-radius: 22px; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); backdrop-filter: blur(10px); }
+  .plan.hot { background: linear-gradient(180deg, rgba(59,130,246,.16), rgba(255,255,255,.02)); box-shadow: 0 30px 80px -30px rgba(59,130,246,.6); }
+  .ribbon { position: absolute; top: -13px; left: 50%; translate: -50% 0; padding: 5px 16px; border-radius: 99px; font: 600 .75rem var(--font-h); color: #04101f; background: var(--grad); }
+  .desc { color: var(--muted); margin-top: 6px; font-size: .95rem; }
+  .price { margin: 22px 0; display: flex; align-items: baseline; gap: 4px; }
+  .price sup { font-size: 1.2rem; color: var(--muted); }
+  .price b { font: 700 3rem/1 var(--font-h); }
+  .price span { color: var(--muted); }
+  ul { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; flex: 1; }
+  li { display: flex; gap: 10px; align-items: flex-start; font-size: .94rem; color: #cbd5e1; }
+  li :global(svg) { width: 18px; height: 18px; color: var(--green); flex: none; margin-top: 3px; }
+  .note { text-align: center; margin-top: 30px; color: var(--muted); }
+  .note a { color: var(--cyan); text-decoration: underline; }
+</style>

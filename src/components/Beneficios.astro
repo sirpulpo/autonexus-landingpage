@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+const ben = [
+  ['shield', 'Evita reclamos', 'Inspección confirmada y evidencias bloqueadas por etapa: un historial que respalda a tu taller.'],
+  ['chat', 'Mejor comunicación', 'Notificaciones y chat por orden. El cliente siempre sabe qué pasa y por qué.'],
+  ['clock', 'Ahorra tiempo', 'Menos llamadas a recepción y menos papeleo; el equipo se enfoca en reparar.'],
+  ['chart', 'Decide con datos', 'Tiempos de entrega, refacciones más usadas y rendimiento por mecánico.'],
+  ['users', 'Clientes que regresan', 'La transparencia genera confianza, lealtad y recomendaciones.'],
+  ['bolt', 'Operación ordenada', 'Cada orden con folio, responsable, fecha promesa y estatus claro.'],
+];
+const seg = [
+  ['lock', 'Datos aislados por taller'],
+  ['users', 'Acceso por roles y permisos'],
+  ['shield', 'Sesiones con tokens seguros'],
+  ['building', 'Archivos con URLs firmadas'],
+  ['bolt', 'Protección contra abuso'],
+  ['wifi', 'Disponible 24/7 en la nube'],
+];
+---
+<section id="beneficios">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Beneficios</span>
+      <h2>Más control para ti, <span class="grad-text">más confianza para ellos</span></h2>
+    </div>
+    <div class="grid g3">
+      {ben.map(([i, t, d], k) => (
+        <article class="card rv" style={`--d:${(k % 3) * 0.1}s`}>
+          <div class="ico"><Icon name={i} /></div><h3>{t}</h3><p>{d}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="sec rv" id="seguridad">
+      <div>
+        <span class="eyebrow">Seguridad y tecnología</span>
+        <h2>Construido para <span class="grad-text">proteger tu información</span></h2>
+        <p>Infraestructura moderna con comunicación en tiempo real, notificaciones push y almacenamiento seguro en la nube.</p>
+      </div>
+      <ul>
+        {seg.map(([i, t]) => <li><Icon name={i} />{t}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec { margin-top: 90px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 44px; border-radius: 24px; border: 1px solid var(--line); background: radial-gradient(500px 300px at 0% 0%, rgba(59,130,246,.18), transparent 70%), var(--card); }
+  .sec p { color: var(--muted); margin-top: 16px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  li { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.03); font-size: .92rem; }
+  li :global(svg) { width: 20px; height: 20px; color: var(--cyan); flex: none; }
+  @media (max-width: 860px) { .sec { grid-template-columns: 1fr; padding: 28px 22px; } }
+  @media (max-width: 480px) { ul { grid-template-columns: 1fr; } }
+</style>

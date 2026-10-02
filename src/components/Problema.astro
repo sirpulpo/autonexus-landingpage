@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+const items = [
+  ['phone', '“¿Ya está mi carro?”', 'Tu recepción pierde horas contestando llamadas y mensajes. Con AutoNexus el cliente consulta el estatus solo, en tiempo real.'],
+  ['camera', '“Ese rayón ya lo traía…”', 'Sin evidencia, pierdes discusiones. Cada ingreso queda con inspección fotográfica confirmada por el cliente.'],
+  ['money', '“Yo no autoricé eso”', 'El presupuesto se aprueba o rechaza desde el celular del cliente. Queda registro de cada decisión.'],
+];
+---
+<section id="problema">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">El problema</span>
+      <h2>Lo que le cuesta dinero a un taller <span class="grad-text">sin control de servicios</span></h2>
+      <p>Papeles perdidos, clientes inquietos y reclamos que erosionan tu reputación. AutoNexus convierte el caos en un proceso transparente.</p>
+    </div>
+    <div class="grid g3">
+      {items.map(([i, t, d], k) => (
+        <article class="card rv" style={`--d:${k * 0.1}s`}>
+          <div class="ico"><Icon name={i} /></div>
+          <h3>{t}</h3>
+          <p>{d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

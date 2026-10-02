@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Página no encontrada | AutoNexus" description="La página que buscas no existe." path="/404/" noindex>
+  <main>
+    <h1>404</h1>
+    <p>Esta página no existe.</p>
+    <a href="/" class="btn btn-primary">Volver al inicio</a>
+  </main>
+</BaseLayout>
+
+<style>
+  main { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 18px; text-align: center; }
+  p { color: var(--muted); }
+</style>

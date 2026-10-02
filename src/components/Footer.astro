@@ -1,0 +1,30 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap row">
+    <div>
+      <a href="/" class="b">Auto<span class="grad-text">Nexus</span></a>
+      <p>Software para talleres mecánicos. Control de servicios con seguimiento en tiempo real.</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/privacidad/">Aviso de privacidad</a>
+    </nav>
+  </div>
+  <div class="wrap copy">© {year} {site.name}. Todos los derechos reservados.</div>
+</footer>
+
+<style>
+  footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: #050810; }
+  .row { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+  .b { font: 700 1.4rem var(--font-h); }
+  p { color: var(--muted); max-width: 340px; margin-top: 10px; font-size: .93rem; }
+  nav { display: flex; flex-wrap: wrap; gap: 10px 26px; align-content: flex-start; color: var(--muted); font-size: .93rem; }
+  nav a:hover { color: #fff; }
+  .copy { margin-top: 36px; color: #64748b; font-size: .82rem; }
+</style>

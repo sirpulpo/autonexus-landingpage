@@ -1,0 +1,145 @@
+---
+import Icon from './Icon.astro';
+import { waLink } from '../data/site';
+const steps = ['Recibido', 'Diagnóstico', 'En reparación', 'Control de calidad', 'Listo'];
+---
+<section class="hero" id="inicio">
+  <div class="mesh" aria-hidden="true"></div>
+  <div class="grid3d" aria-hidden="true"></div>
+  <canvas id="nexus" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="copy">
+      <span class="pill rv"><i></i> Sistema para talleres mecánicos · PWA</span>
+      <h1 class="rv" style="--d:.08s">
+        El software para tu taller mecánico con <span class="grad-text">seguimiento en tiempo real</span>
+      </h1>
+      <p class="lead rv" style="--d:.16s">
+        AutoNexus registra cada servicio con fotos y evidencias, y deja que tus clientes vean el estatus de su vehículo desde el celular.
+        Menos llamadas, cero reclamos y clientes que confían en ti.
+      </p>
+      <div class="cta rv" style="--d:.24s">
+        <a href="#contacto" class="btn btn-primary">Solicita tu demo gratis</a>
+        <a href={waLink()} class="btn btn-ghost" target="_blank" rel="noopener"><Icon name="wa" /> Hablar por WhatsApp</a>
+      </div>
+      <ul class="trust rv" style="--d:.32s">
+        <li><Icon name="check" /> Sin descargar apps de tienda</li>
+        <li><Icon name="check" /> Tracking con solo un enlace</li>
+        <li><Icon name="check" /> Listo en el mismo día</li>
+      </ul>
+    </div>
+
+    <div class="devices rv" style="--d:.2s" aria-label="Vista previa de las apps del taller y del cliente">
+      <div class="phone back" data-tilt>
+        <div class="notch"></div>
+        <div class="scr">
+          <div class="app-top"><b>Taller</b><span class="tag">Orden #0142</span></div>
+          <div class="row"><span>Nissan Versa 2019</span><em>Mecánico: Luis</em></div>
+          <div class="mini-card"><Icon name="camera" /> 6 fotos de inspección <i class="ok">confirmada</i></div>
+          <div class="mini-card"><Icon name="money" /> Presupuesto $4,860 <i class="ok">aprobado</i></div>
+          <div class="mini-card"><Icon name="chat" /> “¿Ya quedó mi carro?” <i class="new">nuevo</i></div>
+          <div class="bars"><span style="--h:40%"></span><span style="--h:65%"></span><span style="--h:50%"></span><span style="--h:85%"></span><span style="--h:70%"></span></div>
+        </div>
+      </div>
+
+      <div class="phone front" data-tilt data-cycle>
+        <div class="notch"></div>
+        <div class="scr">
+          <div class="app-top"><b>Mi Taller</b><span class="tag live"><i></i> En vivo</span></div>
+          <div class="car">Nissan Versa 2019</div>
+          <div class="status" data-label>En reparación</div>
+          <ol class="prog">
+            {steps.map((s) => <li data-s><span class="dot"></span>{s}</li>)}
+          </ol>
+          <div class="push"><Icon name="bell" /><div><b>AutoNexus</b><span>Tu vehículo cambió de estatus</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap stats">
+    <div class="rv"><b data-count="9" data-suffix=" etapas">0</b><span>de seguimiento por servicio</span></div>
+    <div class="rv" style="--d:.08s"><b data-count="100" data-suffix="%">0</b><span>historial con evidencias</span></div>
+    <div class="rv" style="--d:.16s"><b data-count="2">0</b><span>apps PWA: taller y cliente</span></div>
+    <div class="rv" style="--d:.24s"><b data-count="24" data-suffix="/7">0</b><span>consulta del estatus por el cliente</span></div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: 130px 0 40px; overflow: hidden; min-height: 100svh; }
+  .mesh { position: absolute; inset: 0; background:
+    radial-gradient(600px 400px at 15% 20%, rgba(59,130,246,.28), transparent 70%),
+    radial-gradient(600px 460px at 85% 30%, rgba(34,211,238,.18), transparent 70%),
+    radial-gradient(700px 400px at 50% 100%, rgba(24,103,192,.3), transparent 70%);
+    animation: drift 14s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform: translate3d(-3%, 2%, 0) scale(1.06); } }
+  .grid3d { position: absolute; left: -20%; right: -20%; bottom: 0; height: 55%;
+    background-image: linear-gradient(rgba(59,130,246,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,.22) 1px, transparent 1px);
+    background-size: 56px 56px; transform: perspective(500px) rotateX(62deg); transform-origin: bottom;
+    -webkit-mask-image: linear-gradient(to top, #000, transparent 85%); mask-image: linear-gradient(to top, #000, transparent 85%);
+    animation: gridmove 3s linear infinite; }
+  @keyframes gridmove { to { background-position: 0 56px; } }
+  #nexus { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .7; }
+  .hero-in { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border: 1px solid var(--line); border-radius: 99px; background: rgba(255,255,255,.04); font-size: .84rem; color: var(--muted); margin-bottom: 24px; }
+  .pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 var(--green); animation: ping 2s infinite; }
+  @keyframes ping { 70% { box-shadow: 0 0 0 9px transparent; } to { box-shadow: 0 0 0 0 transparent; } }
+  .lead { margin-top: 24px; color: #b7c3d6; font-size: 1.15rem; max-width: 560px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .cta :global(svg) { width: 20px; height: 20px; }
+  .trust { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--muted); font-size: .92rem; }
+  .trust li { display: flex; gap: 8px; align-items: center; }
+  .trust :global(svg) { width: 18px; height: 18px; color: var(--green); }
+
+  .devices { position: relative; height: 560px; }
+  .phone { position: absolute; width: 250px; height: 500px; border-radius: 38px; padding: 10px; background: linear-gradient(160deg,#1e293b,#0b1220);
+    border: 1px solid rgba(148,163,184,.3); box-shadow: 0 30px 80px -20px rgba(59,130,246,.55), inset 0 0 0 1px rgba(255,255,255,.04); transition: transform .15s ease-out; }
+  .phone.back { left: 0; top: 10px; transform: rotate(-6deg); opacity: .92; animation: float1 7s ease-in-out infinite; }
+  .phone.front { right: 0; top: 50px; box-shadow: 0 30px 90px -15px rgba(34,211,238,.5); animation: float2 6s ease-in-out infinite; }
+  @keyframes float1 { 50% { translate: 0 -12px; } }
+  @keyframes float2 { 50% { translate: 0 14px; } }
+  .notch { position: absolute; top: 14px; left: 50%; translate: -50% 0; width: 70px; height: 18px; border-radius: 12px; background: #04070d; z-index: 2; }
+  .scr { height: 100%; border-radius: 30px; background: #0a111f; padding: 44px 16px 16px; overflow: hidden; display: flex; flex-direction: column; gap: 10px; font-size: .78rem; }
+  .app-top { display: flex; justify-content: space-between; align-items: center; font: 600 .95rem var(--font-h); }
+  .tag { font: 500 .66rem var(--font-b); padding: 3px 9px; border-radius: 99px; background: rgba(59,130,246,.18); color: #93c5fd; display: inline-flex; gap: 6px; align-items: center; }
+  .tag.live { background: rgba(52,211,153,.15); color: var(--green); }
+  .tag.live i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.2s infinite; }
+  @keyframes blink { 50% { opacity: .2; } }
+  .row { display: flex; flex-direction: column; color: #cbd5e1; font-weight: 500; }
+  .row em { font-style: normal; color: var(--muted); font-size: .7rem; }
+  .mini-card { display: flex; align-items: center; gap: 8px; padding: 10px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: #cbd5e1; }
+  .mini-card :global(svg) { width: 16px; height: 16px; color: var(--cyan); flex: none; }
+  .mini-card i { font-style: normal; margin-left: auto; font-size: .62rem; padding: 2px 7px; border-radius: 99px; }
+  .ok { background: rgba(52,211,153,.15); color: var(--green); }
+  .new { background: rgba(251,191,36,.15); color: var(--amber); }
+  .bars { flex: 1; display: flex; align-items: flex-end; gap: 8px; padding-top: 6px; }
+  .bars span { flex: 1; height: var(--h); border-radius: 6px 6px 2px 2px; background: var(--grad); opacity: .85; animation: grow 3s ease-in-out infinite alternate; }
+  .bars span:nth-child(even) { animation-delay: .6s; }
+  @keyframes grow { from { transform: scaleY(.7); transform-origin: bottom; } to { transform: scaleY(1); transform-origin: bottom; } }
+  .car { color: var(--muted); }
+  .status { font: 700 1.25rem var(--font-h); color: #fff; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .prog { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 12px; position: relative; }
+  .prog li { display: flex; align-items: center; gap: 10px; color: #64748b; transition: color .4s; }
+  .prog .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #334155; transition: all .4s; }
+  .prog li.done { color: #e2e8f0; }
+  .prog li.done .dot { background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  .push { margin-top: auto; display: flex; gap: 10px; align-items: center; padding: 10px; border-radius: 14px; background: rgba(255,255,255,.08); border: 1px solid var(--line); animation: pushin 4.4s ease-in-out infinite; }
+  .push :global(svg) { width: 20px; height: 20px; color: var(--amber); flex: none; }
+  .push div { display: flex; flex-direction: column; line-height: 1.3; }
+  .push b { font-size: .72rem; } .push span { color: var(--muted); font-size: .68rem; }
+  @keyframes pushin { 0%,10% { transform: translateY(20px); opacity: 0; } 20%,80% { transform: none; opacity: 1; } 95%,100% { transform: translateY(20px); opacity: 0; } }
+
+  .stats { position: relative; margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--line); overflow: hidden; }
+  .stats > div { background: rgba(9,14,26,.85); padding: 24px; backdrop-filter: blur(8px); }
+  .stats b { display: block; font: 700 2rem var(--font-h); color: #fff; }
+  .stats span { color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 960px) {
+    .hero-in { grid-template-columns: 1fr; }
+    .devices { height: 540px; max-width: 520px; margin-inline: auto; width: 100%; }
+    .phone.back { left: 0; } .phone.front { right: 0; }
+  }
+  @media (max-width: 520px) {
+    .phone { width: 210px; height: 440px; border-radius: 32px; }
+    .devices { height: 480px; }
+    .scr { font-size: .7rem; padding-top: 38px; }
+  }
+</style>

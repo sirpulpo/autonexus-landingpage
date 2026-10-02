@@ -1,0 +1,33 @@
+---
+import { estados } from '../data/site';
+---
+<section id="estados" class="alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Seguimiento en tiempo real</span>
+      <h2>Cada etapa del servicio, <span class="grad-text">visible para tu cliente</span></h2>
+      <p>Nueve estados claros que se actualizan al instante y notifican al cliente. Se acabó el “¿cómo va mi carro?”.</p>
+    </div>
+    <ol class="tl">
+      {estados.map((e, i) => (
+        <li class="tl-step">
+          <span class="node"><b>{i + 1}</b></span>
+          <div class="body"><h3>{e.n}</h3><p>{e.d}</p></div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .alt { background: linear-gradient(180deg, transparent, rgba(11,18,32,.9) 20%, rgba(11,18,32,.9) 80%, transparent); }
+  .tl { list-style: none; margin: 0; padding: 0 0 0 4px; position: relative; max-width: 760px; }
+  .tl::before { content: ''; position: absolute; left: 25px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+  .tl-step { display: flex; gap: 22px; padding-bottom: 30px; position: relative; opacity: .45; transform: translateX(-8px); transition: all .6s; }
+  .tl-step:last-child { padding-bottom: 0; }
+  .tl-step.on { opacity: 1; transform: none; }
+  .node { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--bg); border: 2px solid #334155; z-index: 1; transition: all .6s; font: 700 .95rem var(--font-h); color: var(--muted); }
+  .tl-step.on .node { border-color: var(--cyan); color: #fff; box-shadow: 0 0 22px rgba(34,211,238,.55), inset 0 0 12px rgba(34,211,238,.25); }
+  .body { padding-top: 6px; }
+  .body p { color: var(--muted); font-size: .96rem; }
+</style>

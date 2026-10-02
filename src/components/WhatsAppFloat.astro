@@ -1,0 +1,12 @@
+---
+import Icon from './Icon.astro';
+import { waLink } from '../data/site';
+---
+<a class="wa" href={waLink()} target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><Icon name="wa" /></a>
+
+<style>
+  .wa { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: #1fa855; box-shadow: 0 10px 30px rgba(31,168,85,.5); animation: pulse 2.6s infinite; transition: transform .2s; }
+  .wa:hover { transform: scale(1.08); }
+  .wa :global(svg) { width: 30px; height: 30px; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 16px rgba(31,168,85,0), 0 10px 30px rgba(31,168,85,.5); } 0% { box-shadow: 0 0 0 0 rgba(31,168,85,.5), 0 10px 30px rgba(31,168,85,.5); } }
+</style>
