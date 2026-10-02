@@ -2,7 +2,7 @@
 export const site = {
   name: 'AutoNexus',
   url: 'https://autonexus.mx', // PLACEHOLDER
-  whatsapp: '5215512345678', // PLACEHOLDER: código país + número, sin +
+  whatsapp: '525574989093', // PLACEHOLDER: código país + número, sin +
   email: 'hola@autonexus.mx', // PLACEHOLDER
   // Si defines un endpoint (p. ej. Formspree), el formulario hará POST ahí además de abrir WhatsApp.
   formEndpoint: '',
@@ -29,21 +29,21 @@ export const estados = [
 export const planes = [
   {
     nombre: 'Básico',
-    precio: 599, // PLACEHOLDER MXN/mes
+    precio: 1299, // PLACEHOLDER MXN/mes
     desc: 'Para talleres que inician su digitalización.',
     destacado: false,
     items: ['1 sucursal', 'Hasta 3 usuarios', 'Órdenes y presupuestos ilimitados', 'Portal y tracking para clientes', 'Notificaciones push', 'Soporte por WhatsApp'],
   },
   {
     nombre: 'Profesional',
-    precio: 1199, // PLACEHOLDER
+    precio: 2199, // PLACEHOLDER
     desc: 'El favorito de talleres en crecimiento.',
     destacado: true,
     items: ['1 sucursal', 'Hasta 10 usuarios', 'Todo lo de Básico', 'Evidencias foto y video', 'Chat por orden con el cliente', 'Panel de métricas del dueño', 'Soporte prioritario'],
   },
   {
     nombre: 'Multisucursal',
-    precio: 2499, // PLACEHOLDER
+    precio: 4599, // PLACEHOLDER
     desc: 'Para cadenas y grupos de talleres.',
     destacado: false,
     items: ['Sucursales múltiples', 'Usuarios ilimitados', 'Todo lo de Profesional', 'Cuenta única, datos aislados por taller', 'Onboarding y migración asistida', 'Gerente de cuenta dedicado'],
